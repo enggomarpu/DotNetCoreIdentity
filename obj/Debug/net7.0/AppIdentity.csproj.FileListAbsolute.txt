@@ -80,3 +80,4 @@ C:\Users\Umar\Pictures\DotNetCore\AppIdentity\obj\Debug\net7.0\refint\AppIdentit
 C:\Users\Umar\Pictures\DotNetCore\AppIdentity\obj\Debug\net7.0\AppIdentity.pdb
 C:\Users\Umar\Pictures\DotNetCore\AppIdentity\obj\Debug\net7.0\AppIdentity.genruntimeconfig.cache
 C:\Users\Umar\Pictures\DotNetCore\AppIdentity\obj\Debug\net7.0\ref\AppIdentity.dll
+C:\Users\Umar\Pictures\DotNetCore\AppIdentity\obj\Debug\net7.0\AppIdentity.sourcelink.json

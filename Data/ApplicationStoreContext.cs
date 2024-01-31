@@ -14,5 +14,6 @@ namespace AppIdentity.Data
         {
             base.OnModelCreating(modelBuilder);
         }
+        
     }
 }
