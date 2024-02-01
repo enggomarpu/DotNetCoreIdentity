@@ -13,12 +13,20 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<ApplicationStoreContext>(opt =>
+// builder.Services.AddDbContext<ApplicationStoreContext>(opt =>
+// {
+//     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
+// });
+
+builder.Services.AddDbContext<StoreContext>(opt =>
 {
-    opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultSQLiteConnection"));
 });
 
-builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<ApplicationStoreContext>();
+//builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<ApplicationStoreContext>();
+
+builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<StoreContext>();
+
 
 var app = builder.Build();
 
