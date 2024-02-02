@@ -43,6 +43,26 @@ namespace AppIdentity.Controllers
             };
 
         }
+        [HttpPost("login")]
+        public async Task<ActionResult<UserDto>> Login (LoginDto loginDto){
+                
+                var user = await _userManager.FindByEmailAsync(loginDto.Email);
+                if(user == null){
+                    return Unauthorized();
+                }
+
+                var result = await _siginManger.CheckPasswordSignInAsync(user, loginDto.Password, false);
+
+                if(!result.Succeeded){
+                    return Unauthorized();
+                }
+
+                return new UserDto {
+                    Email = loginDto.Email,
+                    UserName = loginDto.Email,
+                    Token = "This is token value.",
+                };
+        }
 
 
 
