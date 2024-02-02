@@ -29,7 +29,7 @@ namespace DotNetCoreIdentity.Services
                 new Claim(ClaimTypes.GivenName, user.Email)
             };
 
-            var creds =  new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+            var creds =  new SigningCredentials(_key, SecurityAlgorithms.HmacSha256Signature);
 
             var securityDes = new SecurityTokenDescriptor{
                 Subject = new ClaimsIdentity(claims),
