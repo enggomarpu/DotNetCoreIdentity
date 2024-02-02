@@ -191,3 +191,4 @@ C:/Users/Umar/Pictures/DotNetCore/AppIdentity/obj/Debug/net7.0/AppIdentity.sourc
 /Users/arcomputers/Pictures/DotNetCoreIdentity/obj/Debug/net7.0/AppIdentity.pdb
 /Users/arcomputers/Pictures/DotNetCoreIdentity/obj/Debug/net7.0/AppIdentity.genruntimeconfig.cache
 /Users/arcomputers/Pictures/DotNetCoreIdentity/obj/Debug/net7.0/ref/AppIdentity.dll
+/Users/arcomputers/Pictures/DotNetCoreIdentity/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll

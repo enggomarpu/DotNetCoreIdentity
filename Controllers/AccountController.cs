@@ -1,5 +1,6 @@
 ﻿using AppIdentity.Dtos;
 using AppIdentity.Entities;
+using DotNetCoreIdentity.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,11 +12,17 @@ namespace AppIdentity.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _siginManger;
+        private readonly ITokenService _tokenService;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> siginManger)
+        public AccountController(
+            UserManager<AppUser> userManager, 
+            SignInManager<AppUser> siginManger,
+            ITokenService tokenService
+        )
         {
             _userManager = userManager;
             _siginManger = siginManger;
+            _tokenService = tokenService;
         }
 
         [HttpPost("Register")]
@@ -38,12 +45,12 @@ namespace AppIdentity.Controllers
             return new UserDto
             {
                 Email = regisDto.Email,
-                Token = "This is token value.",
+               Token = _tokenService.CreateToken(user),
                 UserName = regisDto.Email
             };
 
         }
-        [HttpPost("login")]
+        [HttpPost("Login")]
         public async Task<ActionResult<UserDto>> Login (LoginDto loginDto){
                 
                 var user = await _userManager.FindByEmailAsync(loginDto.Email);
@@ -60,7 +67,7 @@ namespace AppIdentity.Controllers
                 return new UserDto {
                     Email = loginDto.Email,
                     UserName = loginDto.Email,
-                    Token = "This is token value.",
+                    Token = _tokenService.CreateToken(user)
                 };
         }
 
