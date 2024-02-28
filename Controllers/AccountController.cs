@@ -58,11 +58,17 @@ namespace AppIdentity.Controllers
                     return Unauthorized();
                 }
 
-                var result = await _siginManger.CheckPasswordSignInAsync(user, loginDto.Password, false);
+                var result = await _siginManger.CheckPasswordSignInAsync(user, loginDto.Password, true);
 
+                if(result.IsLockedOut){
+                    return Unauthorized("user is locked out");
+                }
+                
                 if(!result.Succeeded){
                     return Unauthorized();
                 }
+
+                
 
                 return new UserDto {
                     Email = loginDto.Email,

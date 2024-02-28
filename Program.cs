@@ -29,7 +29,13 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 
 //builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<ApplicationStoreContext>();
 
-builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<StoreContext>();
+builder.Services.AddIdentity<AppUser, IdentityRole>(opt => {
+    opt.Lockout.AllowedForNewUsers = true;
+    opt.Lockout.MaxFailedAccessAttempts = 3;
+    opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+}).AddEntityFrameworkStores<StoreContext>();
+
+//builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<StoreContext>();
 
 var jwtIssuer = builder.Configuration.GetSection("Token:Issuer").Get<string>();
 var jwtKey = builder.Configuration.GetSection("Token:Key").Get<string>();
